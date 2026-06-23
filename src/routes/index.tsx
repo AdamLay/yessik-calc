@@ -52,7 +52,7 @@ function Home() {
     setUnit((prev) => ({ ...prev, weapons: prev.weapons.filter((_, i) => i !== index) }));
   };
 
-  const unitCost = unit.weapons.length > 0 ? getUnitCost(unit) : 0;
+  const unitCost = getUnitCost(unit);
   const costPerModel = unit.models > 0 ? unitCost / unit.models : 0;
 
   return (
