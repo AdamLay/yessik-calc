@@ -2,7 +2,8 @@ import tailwindcss from "@tailwindcss/vite";
 import { devtools } from "@tanstack/devtools-vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
-import { nitro } from "nitro/vite";
+//import { nitro } from "nitro/vite";
+import netlify from '@netlify/vite-plugin-tanstack-start';
 import { defineConfig } from "vite";
 
 const config = defineConfig({
@@ -12,15 +13,16 @@ const config = defineConfig({
   },
   plugins: [
     devtools(),
-    nitro({
-      output: {
-        dir: "dist",
-      },
-      rollupConfig: { external: [/^@sentry\//] }
-    }),
+    // nitro({
+    //   output: {
+    //     dir: "dist",
+    //   },
+    //   rollupConfig: { external: [/^@sentry\//] }
+    // }),
     tailwindcss(),
     tanstackStart(),
     viteReact(),
+    netlify()
   ],
 });
 
