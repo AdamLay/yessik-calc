@@ -7,9 +7,17 @@ import { defineConfig } from "vite";
 
 const config = defineConfig({
   resolve: { tsconfigPaths: true },
+  server: {
+    port: 3000,
+  },
   plugins: [
     devtools(),
-    nitro({ rollupConfig: { external: [/^@sentry\//] } }),
+    nitro({
+      output: {
+        dir: "dist",
+      },
+      rollupConfig: { external: [/^@sentry\//] }
+    }),
     tailwindcss(),
     tanstackStart(),
     viteReact(),
